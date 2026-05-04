@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aadil Mods</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
+  <style>
+    :root{
+      --bg1:#050b16;
+      --bg2:#081527;
+      --glass:rgba(255,255,255,.08);
+      --glass-border:rgba(255,255,255,.18);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.72);
+      --accent:#25EDC6;
+      --accent2:#8b5cf6;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(37,237,198,.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(139,92,246,.18), transparent 28%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+    }
+
+    #tsparticles{
+      position:fixed;
+      inset:0;
+      z-index:0;
+    }
+
+    .wrap{
+      position:relative;
+      z-index:2;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+
+    .glass-card{
+      width:min(92vw, 520px);
+      padding:28px 24px;
+      border-radius:28px;
+      background:var(--glass);
+      border:1px solid var(--glass-border);
+      box-shadow:0 18px 60px rgba(0,0,0,.35);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      position:relative;
+      overflow:hidden;
+      transform:translateY(0);
+      animation: floaty 6s ease-in-out infinite;
+    }
+
+    .glass-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:linear-gradient(135deg, rgba(37,237,198,.35), rgba(139,92,246,.25), transparent 70%);
+      opacity:.35;
+      pointer-events:none;
+      filter:blur(18px);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(32px, 6vw, 48px);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+      position:relative;
+    }
+
+    .subtitle{
+      margin:14px 0 24px;
+      font-size:15px;
+      line-height:1.65;
+      color:var(--muted);
+      max-width:42ch;
+      position:relative;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      position:relative;
+    }
+
+    .btn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:14px;
+      transition:.25s ease;
+    }
+
+    .btn-copy{
+      background:linear-gradient(135deg, var(--accent), #7af9df);
+      color:#04110d;
+      box-shadow:0 10px 24px rgba(37,237,198,.18);
+    }
+
+    .btn-copy:hover{
+      transform:translateY(-2px) scale(1.02);
+    }
+
+    .btn-link{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .btn-link:hover{
+      background:rgba(255,255,255,.12);
+      transform:translateY(-2px);
+    }
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:22px;
+      transform:translateX(-50%) translateY(18px);
+      opacity:0;
+      padding:11px 16px;
+      border-radius:999px;
+      background:rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter:blur(12px);
+      color:#fff;
+      font-size:14px;
+      transition:.25s ease;
+      z-index:5;
+    }
+
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
+
+    @keyframes floaty{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+    }
+  </style>
+</head>
+<body>
+  <div id="tsparticles"></div>
+
+  <div class="wrap">
+    <div class="glass-card">
+      <div class="badge">✨ Aadil Mods</div>
+      <h1>Aadil Mods</h1>
+      <p class="subtitle">
+        Downloading Among Us Aadil Mod Menu with a smooth, modern, and clean experience.
+      </p>
+
+      <div class="actions">
+        <button class="btn btn-copy" onclick="copyLink()">Copy Link</button>
+        <button class="btn btn-link" onclick="window.open('https://mods.aadilmods.com/posts/amongus','_blank')">
+          Open Page
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <script>
+    const url = "https://mods.aadilmods.com/posts/amongus";
+
+    function copyLink() {
+      navigator.clipboard.writeText(url).then(() => {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 1200);
+      });
+    }
+
+    tsParticles.load("tsparticles", {
+      background: { color: { value: "#050b16" } },
+      fullScreen: { enable: false },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          resize: true
+        },
+        modes: {
+          repulse: { distance: 100, duration: 0.4 }
+        }
+      },
+      particles: {
+        number: { value: 55, density: { enable: true, area: 800 } },
+        color: { value: ["#25EDC6", "#8b5cf6", "#ffffff"] },
+        links: {
+          enable: true,
+          color: "#25EDC6",
+          distance: 130,
+          opacity: 0.22,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.2,
+          direction: "none",
+          random: false,
+          straight: false,
+          outModes: { default: "bounce" }
+        },
+        opacity: { value: 0.45 },
+        size: { value: { min: 1, max: 3 } }
+      },
+      detectRetina: true
+    });
+  </script>
+</body>
+</html>
